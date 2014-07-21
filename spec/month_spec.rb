@@ -75,4 +75,12 @@ RSpec.describe Month do
     end
   end
 
+  context ".get_month" do
+    it "returns the correct array" do
+      Month.new(1, 2013).get_month.should == [[nil, nil, 1, 2, 3, 4, 5],
+      [6, 7, 8, 9, 10, 11, 12], [13,14, 15, 16, 17, 18, 19], [20, 21, 22, 23, 24, 25, 26],
+      [27, 28, 29, 30, 31, nil, nil], [nil, nil, nil, nil, nil, nil, nil]]
+    end
+  end
+
 end
