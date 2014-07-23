@@ -4,8 +4,8 @@ class Month
   MONTHS = [nil, "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
   def initialize(month, year)
-    @month = month
-    @year = year
+      @month = month
+      @year = year
   end
 
   def month_header
@@ -35,27 +35,6 @@ class Month
   def leap_year?(year)
     (year % 400 == 0) || (year % 100 != 0 && year % 4 == 0)
   end
-
-  # def get_first_day
-  #   day = Zeller.calculate(@month, @year)
-  #   case day
-  #   when 1
-  #     ["1".rjust(2)]
-  #   when 2
-  #     ["1".rjust(5)]
-  #   when 3
-  #     ["1".rjust(8)]
-  #   when 4
-  #     ["1".rjust(11)]
-  #   when 5
-  #     ["1".rjust(14)]
-  #   when 6
-  #     ["1".rjust(17)]
-  #   when 7
-  #     ["1".rjust(20)]
-  #   end
-  #
-  # end
 
   def get_month
     month = []
@@ -125,7 +104,7 @@ class Month
         end
 
       else
-        line.delete_if { |index| index == nil }
+        line.delete_if { |index| index.nil? }
       end
       line = line.join(" ")
 
