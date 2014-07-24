@@ -1,7 +1,8 @@
 require_relative 'zellers_congruence'
 
 class Month
-  MONTHS = [nil, "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+  MONTHS = [nil, "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"]
 
   def initialize(month, year)
       @month = month
@@ -21,15 +22,10 @@ class Month
     when 4, 6, 9, 11
       30
     when 2
-      if leap_year?(@year)
-        29
-      else
-        28
-      end
+      leap_year?(@year) ? 29 : 28
     else
       31
     end
-
   end
 
   def leap_year?(year)
@@ -48,42 +44,18 @@ class Month
       zeller += 1
       day += 1
     end
-    month << []
-    7.times do
-      month[1] << day
-      day += 1
-    end
-    month << []
-    7.times do
-      month[2] << day
-      day += 1
-    end
-    month << []
-    7.times do
-      if day <= days_in_month
-        month[3] << day
-        day += 1
-      else
-        month[4] << nil
+    counter = 1
+    5.times do
+      month << []
+      7.times do
+        if day <= days_in_month
+          month[counter] << day
+          day += 1
+        else
+          month[counter] << nil
+        end
       end
-    end
-    month << []
-    7.times do
-      if day <= days_in_month
-        month[4] << day
-        day += 1
-      else
-        month[4] << nil
-      end
-    end
-    month << []
-    7.times do
-      if day <= days_in_month
-        month[5] << day
-        day += 1
-      else
-        month[5] << nil
-      end
+      counter += 1
     end
     month
   end
@@ -91,7 +63,6 @@ class Month
   def to_s
     output = [month_header]
     output << ["Su Mo Tu We Th Fr Sa\n"]
-
     get_month.map do |line|
       unless line.include?(days_in_month) || line[6] == nil
         line.map! do |index|
@@ -102,17 +73,12 @@ class Month
           end
           index
         end
-
       else
         line.delete_if { |index| index.nil? }
       end
       line = line.join(" ")
-
       output << line + "\n"
     end
-
     output
   end
-
-
 end

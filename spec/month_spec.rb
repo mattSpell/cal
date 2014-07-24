@@ -82,5 +82,4 @@ RSpec.describe Month do
       [27, 28, 29, 30, 31, nil, nil], [nil, nil, nil, nil, nil, nil, nil]]
     end
   end
-
 end
