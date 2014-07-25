@@ -4,7 +4,7 @@ class Year
   def initialize(year)
     @year = year
     @year_array = get_year
-    @march_length = 0
+    @mar_length = 0
     @june_length = 0
     @sept_length = 0
     @dec_length = 0
@@ -20,7 +20,7 @@ class Year
       month = Month.new(i, @year)
       case i
       when 3
-        @march_length = month.days_in_month
+        @mar_length = month.days_in_month
       when 6
         @june_length = month.days_in_month
       when 9
@@ -47,8 +47,8 @@ class Year
       end
       i
     end
-    stuff = array[-1].to_i
-    if stuff = @march_length || stuff = @june_length || stuff = @sept_length || stuff = @dec_length
+    last_day = array[-1].to_i
+    if last_day = @mar_length || last_day = @june_length || last_day = @sept_length || last_day = @dec_length
       array.join(" ").insert(20, " ").insert(42, " ").rstrip
     else
       array.join(" ").insert(20, " ").insert(42, " ")
@@ -65,26 +65,26 @@ class Year
     output << header1
     output << weeks
     6.times do |i|
-      first_lines = get_line(0,2,i)
-      output << first_lines + "\n"
+      first_qtr = get_line(0,2,i)
+      output << first_qtr + "\n"
     end
     output << header2
     output << weeks
     6.times do |i|
-      second_lines = get_line(3,5,i)
-      output << second_lines + "\n"
+      second_qtr = get_line(3,5,i)
+      output << second_qtr + "\n"
     end
     output << header3
     output << weeks
     6.times do |i|
-      third_lines = get_line(6,8,i)
-      output << third_lines + "\n"
+      third_qtr = get_line(6,8,i)
+      output << third_qtr + "\n"
     end
     output << header4
     output << weeks
     6.times do |i|
-      fourth_set = get_line(9,11,i)
-      output << fourth_set + "\n"
+      fourth_qtr = get_line(9,11,i)
+      output << fourth_qtr + "\n"
     end
     output
   end

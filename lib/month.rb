@@ -37,7 +37,6 @@ class Month
     zeller = Zeller.calculate(@month, @year)
     first_week = 8 - zeller
     day = 1
-
     month << []
     first_week.times do
       month[0].insert(zeller - 1, day)
