@@ -3,12 +3,13 @@
 require_relative 'lib/month'
 require_relative 'lib/year'
 
-
 if ARGV.length == 1
   year = ARGV[0].to_i
   year = Year.new(year)
-  # puts "=========="
   puts year.to_s
+
+elsif ARGV.length >= 3
+  puts "usage: cal [month] year"
 
 else
   month = ARGV[0].to_i

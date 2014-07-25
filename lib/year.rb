@@ -2,6 +2,10 @@
 
 class Year
   def initialize(year)
+    if year < 1800 || year >= 3001
+      puts "cal: #{year} must be in range (1800..3000)"
+      exit
+    end
     @year = year
     @year_array = get_year
     @mar_length = 0

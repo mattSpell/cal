@@ -54,8 +54,10 @@ RSpec.describe Year do
       year = Year.new(2013)
       year.get_line(0,2,0).should == "       1  2  3  4  5                  1  2                  1  2"
     end
-
+    it "returns the correct line" do
+      year = Year.new(1940)
+      year.get_line(0,2,0).should == "    1  2  3  4  5  6               1  2  3                  1  2"
+    end
   end
-
 
 end

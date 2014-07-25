@@ -5,8 +5,12 @@ class Month
     "July", "August", "September", "October", "November", "December"]
 
   def initialize(month, year)
-      @month = month
-      @year = year
+    if month >= 13
+      puts "cal: #{month} must be between (1..12)"
+      exit
+    end
+    @month = month
+    @year = year
   end
 
   def month_header
