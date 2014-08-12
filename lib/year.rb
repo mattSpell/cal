@@ -1,5 +1,3 @@
-# require_relative 'month'
-
 class Year
   def initialize(year)
     if year < 1800 || year >= 3001
@@ -60,36 +58,21 @@ class Year
   end
 
   def to_s
-    header1 = "      January               February               March\n"
-    header2 = "       April                  May                   June\n"
-    header3 = "        July                 August              September\n"
-    header4 = "      October               November              December\n"
+    header = ["      January               February               March\n",
+      "       April                  May                   June\n",
+      "        July                 August              September\n",
+      "      October               November              December\n"]
     weeks = "Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa\n"
     output = print_title
-    output << header1
-    output << weeks
-    6.times do |i|
-      first_qtr = get_line(0,2,i)
-      output << first_qtr + "\n"
-    end
-    output << header2
-    output << weeks
-    6.times do |i|
-      second_qtr = get_line(3,5,i)
-      output << second_qtr + "\n"
-    end
-    output << header3
-    output << weeks
-    6.times do |i|
-      third_qtr = get_line(6,8,i)
-      output << third_qtr + "\n"
-    end
-    output << header4
-    output << weeks
-    6.times do |i|
-      fourth_qtr = get_line(9,11,i)
-      output << fourth_qtr + "\n"
-    end
+    inputs = [[0, 2], [3, 5], [6, 8], [9, 11]]
+    inputs.each_with_index { |qtr, i|
+      output << header[i]
+      output << weeks
+      6.times do |j|
+        line = get_line(qtr[0], qtr[1], j) + "\n"
+        output << line
+      end
+    }
     output
   end
 end
